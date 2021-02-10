@@ -1,16 +1,6 @@
 import React from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 300 + theme.spacing(3) * 2,
-  },
-  margin: {
-    height: theme.spacing(3),
-  },
-}));
 
 const PrettoSlider = withStyles({
   root: {
@@ -45,31 +35,37 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
-function Rate() {
-  const classes = useStyles();
+
+
+function Rate(props) {
+  const rateSliderHandler = (event, newValue) => {
+    // props.setSelectedFeelingsList(
+    //   props.selectedFeelingsList.map((e) => {
+    //     console.log(event.target.name)
+    //     if (e.feeling === event.target.name) {
+    //       return {
+    //         ...e,
+    //         feelingIntensity: newValue,
+    //       };
+    //     }
+    //   })
+    // );
+  };
   return (
     <React.Fragment>
-      <p className="handwriting-area">Pretty</p>
-      <PrettoSlider
-        className="feelings-slider"
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
-      />
-      <p className="handwriting-area">Pretty</p>
-      <PrettoSlider
-        className="feelings-slider"
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
-      />
-      <p className="handwriting-area">Pretty</p>
-      <PrettoSlider
-        className="feelings-slider"
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
-      />
+      {props.selectedFeelingsList.map((el) => (
+        <div className="feelings-sliders" key={el.key}>
+          <p className="handwriting-area">{el.feeling}</p>
+          <PrettoSlider
+            className="feelings-slider"
+            valueLabelDisplay="auto"
+            aria-label="pretto slider"
+            defaultValue={50}
+            onChange={rateSliderHandler}
+            name={el.feeling}
+          />
+        </div>
+      ))}
     </React.Fragment>
   );
 }

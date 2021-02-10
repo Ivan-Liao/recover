@@ -25,16 +25,20 @@ function RippleAnime(props) {
 
   // button handler to append to list of selected feelings
   const feelingsButtonHandler = (e) => {
-    if (!props.selectedFeelingsList.includes(e.target.textContent)) {
+    var tmp = [];
+    props.selectedFeelingsList.forEach((e2) => {
+      tmp.push(e2.feeling)
+    });
+    if (!tmp.includes(e.target.textContent)) {
       props.setSelectedFeelingsList([
         ...props.selectedFeelingsList, 
-        {id: v4(),
+        {key: v4(),
           feeling: e.target.textContent}
       ]);
     }
     else {
       props.setSelectedFeelingsList([
-        ...props.selectedFeelingsList.filter(function(item) {return item !== e.target.textContent})
+        ...props.selectedFeelingsList.filter(function(item) {return item.feeling !== e.target.textContent})
       ])
     }
   }
@@ -46,43 +50,64 @@ function RippleAnime(props) {
           <Row>
             <Col>
               {props.feelingsList.slice(0, 4).map((el) => (
-                <Button className="feeling-btn" onClick={feelingsButtonHandler}>
-                  <p className="ripple-text">{el}</p>
+                <Button
+                  key={el.key}
+                  className="feeling-btn"
+                  onClick={feelingsButtonHandler}
+                >
+                  <p className="ripple-text">{el.feeling}</p>
                 </Button>
               ))}
             </Col>
             <Col>
               {props.feelingsList.slice(4, 8).map((el) => (
-                <Button className="feeling-btn" onClick={feelingsButtonHandler}>
-                  <p className="ripple-text">{el}</p>
+                <Button
+                  key={el.key}
+                  className="feeling-btn"
+                  onClick={feelingsButtonHandler}
+                >
+                  <p className="ripple-text">{el.feeling}</p>
                 </Button>
               ))}
             </Col>
             <Col>
               {props.feelingsList.slice(8, 12).map((el) => (
-                <Button className="feeling-btn" onClick={feelingsButtonHandler}>
-                  <p className="ripple-text">{el}</p>
+                <Button
+                  key={el.key}
+                  className="feeling-btn"
+                  onClick={feelingsButtonHandler}
+                >
+                  <p className="ripple-text">{el.feeling}</p>
                 </Button>
               ))}
             </Col>
             <Col>
               {props.feelingsList.slice(12, 16).map((el) => (
-                <Button className="feeling-btn" onClick={feelingsButtonHandler}>
-                  <p className="ripple-text">{el}</p>
+                <Button
+                  key={el.key}
+                  className="feeling-btn"
+                  onClick={feelingsButtonHandler}
+                >
+                  <p className="ripple-text">{el.feeling}</p>
                 </Button>
               ))}
             </Col>
             <Col>
               {props.feelingsList.slice(16, 20).map((el) => (
-                <Button className="feeling-btn" onClick={feelingsButtonHandler}>
-                  <p className="ripple-text">{el}</p>
+                <Button
+                  key={el.key}
+                  className="feeling-btn"
+                  onClick={feelingsButtonHandler}
+                >
+                  <p className="ripple-text">{el.feeling}</p>
                 </Button>
               ))}
             </Col>
           </Row>
           <Row>
             <p className="selected-feelings handwriting-area">
-              I'm feeling {props.selectedFeelingsList.map((e) => e.feeling).join(", ")}
+              I'm feeling{" "}
+              {props.selectedFeelingsList.map((e) => e.feeling).join(", ")}
             </p>
           </Row>
         </Container>

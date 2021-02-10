@@ -6,27 +6,27 @@ import Rate from './components/Rate.js';
 import Plan from './components/Plan';
 
 const defaultfeelingsList = [
-  "stressed",
-  "lonely",
-  "angry",
-  "hopeless",
-  "scared",
-  "empty",
-  "overwhelmed",
-  "disappointed",
-  "numb",
-  "ashamed",
-  "uncomfortable",
-  "lack of control",
-  "desperate",
-  "disgusted",
-  "heartbroken",
-  "mournful",
-  "physical pain",
-  "annoyed",
-  "bored",
-  "lost",
-];
+  { key: 0, feeling: "stressed", intensity: 50 },
+  { key: 1, feeling: "lonely", intensity: 50 },
+  { key: 2, feeling: "angry", intensity: 50 },
+  { key: 3, feeling: "hopeless", intensity: 50 },
+  { key: 4, feeling: "scared", intensity: 50 },
+  { key: 5, feeling: "empty", intensity: 50 },
+  { key: 6, feeling: "overwhelmed", intensity: 50 },
+  { key: 7, feeling: "disappointed", intensity: 50 },
+  { key: 8, feeling: "numb", intensity: 50 },
+  { key: 9, feeling: "ashamed", intensity: 50 },
+  { key: 10, feeling: "uncomfortable", intensity: 50 },
+  { key: 11, feeling: "lack of control", intensity: 50 },
+  { key: 12, feeling: "desperate", intensity: 50 },
+  { key: 13, feeling: "disgusted", intensity: 50 },
+  { key: 14, feeling: "heartbroken", intensity: 50 },
+  { key: 15, feeling: "mournful", intensity: 50 },
+  { key: 16, feeling: "physical pain", intensity: 50 },
+  { key: 17, feeling: "annoyed", intensity: 50 },
+  { key: 18, feeling: "bored", intensity: 50 },
+  { key: 19, feeling: "lost", intensity: 50 },
+]
 
 function App() {
   // list of text for feelings
@@ -67,7 +67,7 @@ function App() {
               />
             </Tab.Pane>
             <Tab.Pane eventKey="second" className="main-tab">
-              <Rate />
+              <Rate selectedFeelingsList={selectedFeelingsList} setSelectedFeelingsList= {setSelectedFeelingsList}/>
             </Tab.Pane>
             <Tab.Pane eventKey="third" className="main-tab">
               <p className="breathe-text">Accept Your Feelings...</p>
