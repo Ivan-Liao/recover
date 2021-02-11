@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import anime from "animejs";
 import v4 from "../../node_modules/uuid/dist/v4.js";
 
-
 function RippleAnime(props) {
+  // effects
+  React.useEffect(() => {
+    props.setSelectedFeelingsList(
+      props.feelingsList.filter((e) => e.selected === true)
+    );
+  }, [props.feelingsList]);
 
   // animation
   const animationRef = React.useRef(null);
@@ -23,25 +28,24 @@ function RippleAnime(props) {
     }, 5000);
   }, []);
 
-  // button handler to append to list of selected feelings
-  const feelingsButtonHandler = (e) => {
-    var tmp = [];
-    props.selectedFeelingsList.forEach((e2) => {
-      tmp.push(e2.feeling)
-    });
-    if (!tmp.includes(e.target.textContent)) {
-      props.setSelectedFeelingsList([
-        ...props.selectedFeelingsList, 
-        {key: v4(),
-          feeling: e.target.textContent}
-      ]);
-    }
-    else {
-      props.setSelectedFeelingsList([
-        ...props.selectedFeelingsList.filter(function(item) {return item.feeling !== e.target.textContent})
-      ])
-    }
-  }
+  // button handler to toggle selected boolean and filter feelingsList to selectedFeelingsList
+  const feelingsButtonHandler = (event) => {
+    props.setFeelingsList(
+      props.feelingsList.map((e) => {
+        // console.log(e.feeling + " " + event.target.textContent)
+        if (e.feeling === event.target.textContent) {
+          console.log(1, event.target.textContent);
+          console.log(1, e.feeling);
+          console.log(1, e.selected);
+          return {
+            ...e,
+            selected: !e.selected,
+          };
+        }
+        return e;
+      })
+    );
+  };
 
   return (
     <React.Fragment>
@@ -107,7 +111,7 @@ function RippleAnime(props) {
           <Row>
             <p className="selected-feelings handwriting-area">
               I'm feeling{" "}
-              {props.selectedFeelingsList.map((e) => e.feeling).join(", ")}
+              {props.selectedFeelingsList.map((el) => el.feeling).join(", ")}
             </p>
           </Row>
         </Container>

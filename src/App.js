@@ -4,33 +4,34 @@ import {Row, Col, Nav, Tab, Tabs, TabContainer, TabContent, TabPane} from 'react
 import RippleAnime from './components/RippleAnime';
 import Rate from './components/Rate.js';
 import Plan from './components/Plan';
+import Breathe from './components/Breathe.js';
 
-const defaultfeelingsList = [
-  { key: 0, feeling: "stressed", intensity: 50 },
-  { key: 1, feeling: "lonely", intensity: 50 },
-  { key: 2, feeling: "angry", intensity: 50 },
-  { key: 3, feeling: "hopeless", intensity: 50 },
-  { key: 4, feeling: "scared", intensity: 50 },
-  { key: 5, feeling: "empty", intensity: 50 },
-  { key: 6, feeling: "overwhelmed", intensity: 50 },
-  { key: 7, feeling: "disappointed", intensity: 50 },
-  { key: 8, feeling: "numb", intensity: 50 },
-  { key: 9, feeling: "ashamed", intensity: 50 },
-  { key: 10, feeling: "uncomfortable", intensity: 50 },
-  { key: 11, feeling: "lack of control", intensity: 50 },
-  { key: 12, feeling: "desperate", intensity: 50 },
-  { key: 13, feeling: "disgusted", intensity: 50 },
-  { key: 14, feeling: "heartbroken", intensity: 50 },
-  { key: 15, feeling: "mournful", intensity: 50 },
-  { key: 16, feeling: "physical pain", intensity: 50 },
-  { key: 17, feeling: "annoyed", intensity: 50 },
-  { key: 18, feeling: "bored", intensity: 50 },
-  { key: 19, feeling: "lost", intensity: 50 },
-]
+const defaultFeelingsList = [
+  { key: 0, feeling: "stressed", intensity: 50, selected: false },
+  { key: 1, feeling: "lonely", intensity: 50, selected: false },
+  { key: 2, feeling: "angry", intensity: 50, selected: false },
+  { key: 3, feeling: "hopeless", intensity: 50, selected: false },
+  { key: 4, feeling: "scared", intensity: 50, selected: false },
+  { key: 5, feeling: "empty", intensity: 50, selected: false },
+  { key: 6, feeling: "overwhelmed", intensity: 50, selected: false },
+  { key: 7, feeling: "disappointed", intensity: 50, selected: false },
+  { key: 8, feeling: "numb", intensity: 50, selected: false },
+  { key: 9, feeling: "ashamed", intensity: 50, selected: false },
+  { key: 10, feeling: "uncomfortable", intensity: 50, selected: false },
+  { key: 11, feeling: "lack of control", intensity: 50, selected: false },
+  { key: 12, feeling: "desperate", intensity: 50, selected: false },
+  { key: 13, feeling: "disgusted", intensity: 50, selected: false },
+  { key: 14, feeling: "heartbroken", intensity: 50, selected: false },
+  { key: 15, feeling: "mournful", intensity: 50, selected: false },
+  { key: 16, feeling: "physical pain", intensity: 50, selected: false },
+  { key: 17, feeling: "annoyed", intensity: 50, selected: false },
+  { key: 18, feeling: "bored", intensity: 50, selected: false },
+  { key: 19, feeling: "lost", intensity: 50, selected: false },
+];
 
 function App() {
   // list of text for feelings
-  const [feelingsList, setfeelingsList] = useState(defaultfeelingsList);
+  const [feelingsList, setFeelingsList] = useState(defaultFeelingsList);
   const [selectedFeelingsList, setSelectedFeelingsList] = useState([]);
 
 
@@ -61,19 +62,22 @@ function App() {
             <Tab.Pane eventKey="first" className="main-tab">
               <RippleAnime
                 feelingsList={feelingsList}
-                setfeelingsList={setfeelingsList}
+                setFeelingsList={setFeelingsList}
                 selectedFeelingsList={selectedFeelingsList}
                 setSelectedFeelingsList={setSelectedFeelingsList}
               />
             </Tab.Pane>
             <Tab.Pane eventKey="second" className="main-tab">
-              <Rate selectedFeelingsList={selectedFeelingsList} setSelectedFeelingsList= {setSelectedFeelingsList}/>
+              <Rate
+                selectedFeelingsList={selectedFeelingsList}
+                setSelectedFeelingsList={setSelectedFeelingsList}
+              />
             </Tab.Pane>
             <Tab.Pane eventKey="third" className="main-tab">
-              <p className="breathe-text">Accept Your Feelings...</p>
-              <p className="breathe-text">Breathe in for 3 seconds...</p>
-              <p className="breathe-text">Hold for 3 seconds...</p>
-              <p className="breathe-text">Breathe out for 3 seconds...</p>
+              <Breathe
+                selectedFeelingsList={selectedFeelingsList}
+                setSelectedFeelingsList={setSelectedFeelingsList}
+              />
             </Tab.Pane>
             <Tab.Pane eventKey="fourth" className="main-tab">
               <Plan />

@@ -39,30 +39,29 @@ const PrettoSlider = withStyles({
 
 function Rate(props) {
   const rateSliderHandler = (event, newValue) => {
-    // props.setSelectedFeelingsList(
-    //   props.selectedFeelingsList.map((e) => {
-    //     console.log(event.target.name)
-    //     if (e.feeling === event.target.name) {
-    //       return {
-    //         ...e,
-    //         feelingIntensity: newValue,
-    //       };
-    //     }
-    //   })
-    // );
+    props.setSelectedFeelingsList(
+      props.selectedFeelingsList.map((e) => {
+        if (e.feeling === event.target.ariaLabel) {
+          return {
+            ...e,
+            intensity: newValue,
+          };
+        }
+        return e;
+      })
+    );
   };
   return (
     <React.Fragment>
       {props.selectedFeelingsList.map((el) => (
         <div className="feelings-sliders" key={el.key}>
-          <p className="handwriting-area">{el.feeling}</p>
+          <p className="handwriting-area slider-text">{el.feeling}</p>
           <PrettoSlider
             className="feelings-slider"
             valueLabelDisplay="auto"
-            aria-label="pretto slider"
+            aria-label={el.feeling}
             defaultValue={50}
             onChange={rateSliderHandler}
-            name={el.feeling}
           />
         </div>
       ))}
