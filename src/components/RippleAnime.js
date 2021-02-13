@@ -34,9 +34,6 @@ function RippleAnime(props) {
       props.feelingsList.map((e) => {
         // console.log(e.feeling + " " + event.target.textContent)
         if (e.feeling === event.target.textContent) {
-          console.log(1, event.target.textContent);
-          console.log(1, e.feeling);
-          console.log(1, e.selected);
           return {
             ...e,
             selected: !e.selected,

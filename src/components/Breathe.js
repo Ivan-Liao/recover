@@ -1,9 +1,9 @@
 import React from "react";
 import anime from "animejs";
-import { Row } from 'react-bootstrap';
+import { Container, Row } from "react-bootstrap";
 
 var randomMovement = function () {
-  return anime.random(-50, 50) + "rem";
+  return anime.random(-45, 45) + "rem";
 };
 
 function animation() {
@@ -30,7 +30,7 @@ function animation() {
       opacity: [{ value: 0.7 }, { value: 0 }],
       easing: "linear",
       duration: 8900,
-    })
+    });
   timelineParameters.complete = function () {
     animation();
   };
@@ -49,18 +49,28 @@ function Breathe(props) {
       <p className="breathe-text">Breathe in for 3 seconds...</p>
       <p className="breathe-text">Hold for 3 seconds...</p>
       <p className="breathe-text">Breathe out for 3 seconds...</p>
-      <Row>
+      <Row className="feelings-container">
         {props.selectedFeelingsList.map((e) => (
           <div className="feeling-bubble" key={e.key}>
-            <pre>
-              <p className="feeling-bubble-text">
-                {[e.feeling, e.intensity].join("\n")}%
-              </p>
-            </pre>
+            <Container>
+              <Row>
+                <p className="feeling-bubble-text">
+                  {e.feeling}
+                </p>
+              </Row>
+              <Row>
+                <p className="feeling-bubble-text">
+                  {e.intensity}%
+                </p>
+              </Row>
+            </Container>
           </div>
         ))}
       </Row>
-      <p className="medium-text">Repeat at least 10 times. Feel free to change the number of seconds to whatever you feel comfortable with.</p>
+      <p className="medium-text">
+        Repeat at least 10 times. Feel free to change the number of seconds to
+        whatever you feel comfortable with.
+      </p>
     </React.Fragment>
   );
 }

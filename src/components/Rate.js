@@ -23,7 +23,7 @@ const PrettoSlider = withStyles({
   active: {},
   valueLabel: {
     left: "calc(10% + 4px)",
-    fontSize: "2rem",
+    fontSize: "2.2rem",
   },
   track: {
     height: 20,
