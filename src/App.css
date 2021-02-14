@@ -180,6 +180,7 @@ textarea {
 
 .small-text {
   font-size: 1.5rem;
+  margin-top: 3rem;
 }
 
 .menu-container {
@@ -206,5 +207,19 @@ textarea {
 }
 
 .text-small {
+  margin-top: 1rem;
   font-size: 0.5 rem;
+}
+
+.plans-history {
+  font-size: 1.5rem;
+}
+
+.history-container {
+  width: 80%;
+}
+
+.links {
+  color: #76BCF5;
+  font-size: 1.5rem;
 }

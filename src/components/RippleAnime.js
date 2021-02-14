@@ -113,6 +113,9 @@ function RippleAnime(props) {
           </Row>
         </Container>
       </div>
+      <a className="links" href="https://youtu.be/IaERIiUYqtA" target="_blank">
+        Quick Start Youtube Video
+      </a>
     </React.Fragment>
   );
 }

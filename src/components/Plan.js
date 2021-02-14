@@ -30,6 +30,17 @@ function Plan (props) {
 
   return (
     <React.Fragment>
+      <p className="plan-text">What Happened?</p>
+      <div className="general-container">
+        <FormControl
+          id="plan0"
+          className="handwriting-area plan-textarea"
+          as="textarea"
+          rows={4}
+          placeholder=""
+          onChange={savePlanFunc}
+        />
+      </div>
       <p className="large-text plan-text">
         What can you <b>learn</b>. What can you do to <b> prevent</b> this from
         happening again?
@@ -67,6 +78,10 @@ function Plan (props) {
           onChange={savePlanFunc}
         />
       </div>
+      <p className="small-text">
+        Are your goals SMART? (S)pecific, (M)easurable, (A)ttainable,
+        (R)elevant, (T)ime-bound?
+      </p>
     </React.Fragment>
   );
 }
